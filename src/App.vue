@@ -39,6 +39,26 @@ const cambiarVista = (vistaDestino) => {
 </script>
 
 <style>
-/* Estilos Globales (Reset) */
-body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #0f1115; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
 </style>
