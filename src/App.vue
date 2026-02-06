@@ -14,6 +14,11 @@
     v-else-if="currentView === 'order'"
     @navegar="cambiarVista"
     />
+
+    <SoftwareView
+    v-else-if="currentView === 'software'"
+    @navegar="cambiarVista"
+    />
   </div>
 </template>
 
@@ -22,6 +27,7 @@ import { ref } from 'vue';
 import HomeView from './components/HomeView.vue';
 import DashboardView from './components/DashboardView.vue';
 import OrderView from './components/OrderView.vue';
+import SoftwareView from './components/SoftwareView.vue';
 
 // Estado global de navegación
 const currentView = ref('home');

@@ -39,6 +39,20 @@
           <h3>Guardian AI</h3>
           <p>Mantenimiento Predictivo potenciado por TensorFlow.</p>
         </div>
+
+        <div class="service-card">
+  <div class="icon">🚀</div>
+  <h3>Desarrollo de Software</h3>
+  <p>Ingeniería de software ágil (Scrum) para soluciones escalables.</p>
+  <ul>
+    <li>Apps a Medida (ERP/CRM)</li>
+    <li>Equipos Full Stack Senior</li>
+  </ul>
+  
+  <button @click="$emit('navegar', 'software')" class="btn-card">
+    Cotizar Proyecto
+  </button>
+</div>
       </div>
     </section>
 
