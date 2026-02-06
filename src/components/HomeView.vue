@@ -30,18 +30,18 @@
       <h2>Nuestros Pilares</h2>
       <div class="cards-grid">
         <div class="service-card">
-          <div class="icon">💻</div>
+          <div class="icon"></div>
           <h3>Hardware as a Service</h3>
           <p>Leasing de equipos Dell & Lenovo configurados a medida.</p>
         </div>
         <div class="service-card highlight-card">
-          <div class="icon">🧠</div>
+          <div class="icon"></div>
           <h3>Guardian AI</h3>
           <p>Mantenimiento Predictivo potenciado por TensorFlow.</p>
         </div>
 
         <div class="service-card">
-  <div class="icon">🚀</div>
+  <div class="icon"></div>
   <h3>Desarrollo de Software</h3>
   <p>Ingeniería de software ágil (Scrum) para soluciones escalables.</p>
   <ul>
