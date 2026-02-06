@@ -6,8 +6,13 @@
     />
 
     <DashboardView 
-      v-else 
+      v-else-if="currentView === 'dashboard'"
       @navegar="cambiarVista" 
+    />
+
+    <OrderView
+    v-else-if="currentView === 'order'"
+    @navegar="cambiarVista"
     />
   </div>
 </template>
@@ -16,6 +21,7 @@
 import { ref } from 'vue';
 import HomeView from './components/HomeView.vue';
 import DashboardView from './components/DashboardView.vue';
+import OrderView from './components/OrderView.vue';
 
 // Estado global de navegación
 const currentView = ref('home');

@@ -21,7 +21,7 @@
         </p>
         <div class="hero-buttons">
           <button @click="$emit('navegar', 'dashboard')" class="btn-primary">Ver Demo Guardian AI</button>
-          <button class="btn-outline">Consultar Leasing</button>
+          <button @click="$emit('navegar', 'order')" class="btn-outline">Consultar Leasing</button>
         </div>
       </div>
     </header>
