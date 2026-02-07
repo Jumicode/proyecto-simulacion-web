@@ -584,6 +584,7 @@ const emit = defineEmits(['navegar']);
   background: radial-gradient(circle, rgba(78, 140, 255, 0.1), transparent 50%);
   opacity: 0;
   transition: opacity 0.4s ease;
+  z-index: 0;
 }
 
 .service-card:hover .card-glow {
@@ -622,18 +623,19 @@ const emit = defineEmits(['navegar']);
   height: 30px;
 }
 
-.service-card h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: white;
+.service-card {
+  background: rgba(20, 24, 33, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  animation: cardFadeIn 0.6s ease-out backwards;
+  z-index: 1;
 }
 
-.service-card p {
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
 
 .feature-list {
   list-style: none;
@@ -698,6 +700,8 @@ const emit = defineEmits(['navegar']);
   gap: 0.5rem;
   transition: all 0.3s ease;
   margin-top: 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .btn-card:hover {
