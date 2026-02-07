@@ -121,7 +121,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 
-defineEmits<{
+const emit = defineEmits<{
   navegar: [view: string]
 }>();
 
@@ -161,8 +161,29 @@ const totalPrice = computed(() => {
   return total;
 });
 
-const procesarPedido = () => {
-  alert(`¡Gracias! Hemos recibido tu solicitud para ${selectedDevice.value.name} con ${config.value.ram}GB RAM. Un agente de TechJulio te contactará.`);
+const procesarPedido = async () => {
+  // Construimos el objeto para enviar al backend
+  const pedidoData = {
+    categoria: "Hardware",
+    producto: selectedDevice.value.name,
+    detalles: `${config.value.ram}GB RAM, ${config.value.storage}TB SSD ` + (config.value.includeAI ? '+ Guardian AI' : ''),
+    precio: totalPrice.value
+  };
+
+  try {
+    const res = await fetch('http://127.0.0.1:8000/pedidos', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(pedidoData)
+    });
+
+    if(res.ok) {
+      alert("✅ Solicitud enviada correctamente.");
+      emit('navegar', 'orders'); // <-- Redirigir a "Mis Pedidos"
+    }
+  } catch (e) {
+    alert("Error enviando pedido");
+  }
 };
 </script>
 

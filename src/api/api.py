@@ -19,6 +19,18 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
+class Pedido(Base):
+    __tablename__ = "pedidos"
+    id = Column(Integer, primary_key=True, index=True)
+    fecha = Column(DateTime, default=datetime.now)
+    categoria = Column(String)  # "Hardware" o "Software"
+    producto = Column(String)   # Ej: "Dell Latitude" o "ERP Corporativo"
+    detalles = Column(String)   # Ej: "16GB RAM, 1TB SSD" o "App Móvil + Diseño"
+    precio = Column(Float)      # Precio estimado
+    estado = Column(String, default="Pendiente") # "Pendiente", "Aprobado", "Enviado"
+
+Base.metadata.create_all(bind=engine)
+
 # Definimos la Tabla "historial"
 class RegistroPrediccion(Base):
     __tablename__ = "historial"
@@ -136,3 +148,27 @@ def leer_historial(db: Session = Depends(get_db)):
     # Obtiene los últimos 10 registros, ordenados del más nuevo al más viejo
     registros = db.query(RegistroPrediccion).order_by(RegistroPrediccion.id.desc()).limit(10).all()
     return registros
+
+class PedidoSchema(BaseModel):
+    categoria: str
+    producto: str
+    detalles: str
+    precio: float
+
+@app.post("/pedidos")
+def crear_pedido(pedido: PedidoSchema, db: Session = Depends(get_db)):
+    nuevo_pedido = Pedido(
+        categoria=pedido.categoria,
+        producto=pedido.producto,
+        detalles=pedido.detalles,
+        precio=pedido.precio
+    )
+    db.add(nuevo_pedido)
+    db.commit()
+    db.refresh(nuevo_pedido)
+    return {"status": "ok", "id": nuevo_pedido.id}
+
+@app.get("/pedidos")
+def obtener_pedidos(db: Session = Depends(get_db)):
+    # Traemos los más recientes primero
+    return db.query(Pedido).order_by(Pedido.fecha.desc()).all()

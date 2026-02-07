@@ -152,7 +152,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 
-defineEmits<{
+const emit = defineEmits<{
   navegar: [view: string]
 }>();
 
@@ -232,8 +232,31 @@ const teamSize = computed(() => {
   return '2 Devs Full Stack';
 });
 
-const solicitarReunion = () => {
-  alert(`¡Genial! Tu proyecto estimado en $${totalEstimate.value} requiere un equipo de ${teamSize.value}. Te contactaremos para definir el Sprint 0.`);
+const solicitarReunion = async () => {
+  // Recopilar nombres de módulos
+  const modNames = selectedModules.value.map(m => m.name).join(', ');
+  
+  const pedidoData = {
+    categoria: "Software",
+    producto: selectedType.value.name, // Ej: "ERP Corporativo"
+    detalles: `Plataformas: ${scope.value.mobile ? 'Web + Móvil' : 'Web'}. Extras: ${modNames}`,
+    precio: totalEstimate.value
+  };
+
+  try {
+    const res = await fetch('http://127.0.0.1:8000/pedidos', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(pedidoData)
+    });
+
+    if(res.ok) {
+      alert("🚀 Proyecto registrado. Te contactaremos pronto.");
+      emit('navegar', 'orders'); // <-- Redirigir a "Mis Pedidos"
+    }
+  } catch (e) {
+    alert("Error registrando proyecto");
+  }
 };
 </script>
 

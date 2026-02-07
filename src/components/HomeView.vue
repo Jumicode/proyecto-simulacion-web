@@ -14,6 +14,7 @@
       </div>
       <div class="nav-links">
         <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#" @click.prevent="$emit('navegar', 'orders')">Mis Pedidos</a>
         <a href="#partners" class="nav-link">Partners</a>
         <button @click="$emit('navegar', 'dashboard')" class="btn-login">
           <span>Acceso Clientes</span>
