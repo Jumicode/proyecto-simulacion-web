@@ -578,6 +578,7 @@ onMounted(() => cargarHistorial());
 }
 
 .card {
+  z-index:1;
   background: rgba(20, 24, 33, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 2.5rem;
@@ -612,6 +613,7 @@ onMounted(() => cargarHistorial());
 }
 
 .card-glow {
+  z-index:0;
   position: absolute;
   top: -50%;
   left: -50%;
@@ -650,6 +652,7 @@ onMounted(() => cargarHistorial());
 
 .input-group {
   margin-bottom: 1.8rem;
+  position: relative; z-index: 2;
 }
 
 .input-group:last-of-type {
