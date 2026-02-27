@@ -67,7 +67,16 @@
           <div class="card-bottom">
             <span class="badge">Premium</span>
           </div>
+
+           <button @click="$emit('navegar', 'order')" class="btn-card">
+            Cotizar Hardware
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <line x1="5" y1="12" x2="19" y2="12" stroke-width="2"/>
+              <polyline points="12 5 19 12 12 19" stroke-width="2"/>
+            </svg>
+          </button>
         </div>
+
 
         <div class="service-card highlight-card">
           <div class="card-glow highlight-glow"></div>
@@ -82,7 +91,14 @@
           <p>Mantenimiento Predictivo potenciado por TensorFlow.</p>
           <div class="card-bottom">
             <span class="badge badge-featured">IA Avanzada</span>
-          </div>
+                 <button @click="$emit('navegar', 'dashboard')" class="btn-card">
+            Probar ahora
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <line x1="5" y1="12" x2="19" y2="12" stroke-width="2"/>
+              <polyline points="12 5 19 12 12 19" stroke-width="2"/>
+            </svg>
+          </button>
+          </div>   
         </div>
 
         <div class="service-card">
