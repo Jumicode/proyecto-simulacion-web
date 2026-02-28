@@ -244,7 +244,7 @@ const solicitarReunion = async () => {
   };
 
   try {
-    const res = await fetch('http://127.0.0.1:8000/pedidos', {
+    const res = await fetch('https://proyecto-simulacion-web.onrender.com/pedidos', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(pedidoData)

@@ -289,7 +289,7 @@ const radarOptions: any = {
 
 const cargarHistorial = async () => {
   try {
-    const res = await fetch('http://127.0.0.1:8000/historial');
+    const res = await fetch('https://proyecto-simulacion-web.onrender.com/historial');
     if (res.ok) listaHistorial.value = await res.json();
   } catch (e) {
     console.error("Error cargando BD (¿Backend apagado?)", e);
@@ -301,7 +301,7 @@ const analizarEstado = async () => {
   checkCount.value++;
 
   try {
-    const response = await fetch('http://127.0.0.1:8000/predict', {
+    const response = await fetch('https://proyecto-simulacion-web.onrender.com/predict', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(sensores.value)

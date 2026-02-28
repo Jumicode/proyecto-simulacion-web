@@ -70,7 +70,7 @@ const loading = ref(true);
 // Cargar datos del Backend
 const fetchPedidos = async () => {
   try {
-    const res = await fetch('http://127.0.0.1:8000/pedidos');
+    const res = await fetch('https://proyecto-simulacion-web.onrender.com/pedidos');
     if (res.ok) pedidos.value = await res.json();
   } catch (e) {
     console.error("Error API:", e);
